@@ -8,7 +8,7 @@ resource "aws_s3_bucket" "oidctest" {
   bucket = "my-tf-test-bucket"
 
   tags = {
-    Name        = "test-bucket-oidc-1234"
+    Name        = "test-bucket-comcast-demo-purpose"
     Environment = "Dev"
   }
 }
