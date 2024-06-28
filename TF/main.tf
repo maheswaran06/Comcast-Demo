@@ -4,7 +4,7 @@ resource "aws_ssm_parameter" "test"{
     value= "test1"
 }
 
-resource "aws_s3_bucket" "example" {
+resource "aws_s3_bucket" "oidctest" {
   bucket = "my-tf-test-bucket"
 
   tags = {
