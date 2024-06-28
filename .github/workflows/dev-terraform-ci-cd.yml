@@ -15,7 +15,7 @@ env:
 
 jobs:
   deploy:
-    name: 'Terraform'
+    name: 'Terraform CI/CD'
     runs-on: ubuntu-latest
     # environment: production
 
@@ -37,11 +37,11 @@ jobs:
         aws-region: ${{ secrets.AWS_REGION }}
         role-session-name: Github-OIDC-Terraform
 
-    # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v1
-      with:
-        cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+    # # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
+    # - name: Setup Terraform
+    #   uses: hashicorp/setup-terraform@v1
+    #   with:
+    #     cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Setup Terraform
