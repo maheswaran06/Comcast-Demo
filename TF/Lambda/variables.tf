@@ -29,3 +29,8 @@ variable "source_code_hash"{
     type = string
     description = "The role of the Lambda function"
 }
+
+variable "environment_variables"{
+    type = map(string)
+    description = "The role of the Lambda function"
+}

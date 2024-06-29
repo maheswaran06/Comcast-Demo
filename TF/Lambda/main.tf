@@ -11,8 +11,6 @@ resource "aws_lambda_function" "demo_lambda" {
   runtime = var.runtime
 
   environment {
-    variables = {
-      env = "dev"
-    }
+    variables = var.environment_variables
   }
 }

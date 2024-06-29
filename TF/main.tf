@@ -41,10 +41,7 @@ module "comcast_lambda_function" {
   source_code_hash = data.archive_file.lambda.output_base64sha256
 
   runtime = "python3.12"
-
-#   environment {
-#     variables = {
-#       env = "dev"
-#     }
-#   }
+  environment_variables = {
+    Env = "Dev" 
+  }  
 }
