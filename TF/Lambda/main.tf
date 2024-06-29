@@ -4,7 +4,7 @@ resource "aws_lambda_function" "demo_lambda" {
   filename      = var.filename
   function_name = var.function_name
   role          = var.role
-  # handler       = var.handler
+  handler       = var.handler
 
   source_code_hash = var.source_code_hash
 

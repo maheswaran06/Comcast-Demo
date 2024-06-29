@@ -10,10 +10,10 @@ variable "function_name"{
     description = "The function name of the Lambda function"
 }
 
-# variable "handler"{
-#     type = string
-#     description = "The function name of the Lambda function"
-# }
+variable "handler"{
+    type = string
+    description = "The function name of the Lambda function"
+}
 
 variable "runtime"{
     type = string

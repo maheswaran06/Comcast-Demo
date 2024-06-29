@@ -36,7 +36,7 @@ module "comcast_lambda_function" {
   filename      = "lambda_function_payload.zip"
   function_name = "Comcast-Demo-lambda-function"
   role          = module.comcast_iam_role.role_arn
-# handler       = "index.test" 
+  handler       = "lambda.lambda_handler" 
 
   source_code_hash = data.archive_file.lambda.output_base64sha256
 
