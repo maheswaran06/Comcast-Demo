@@ -45,7 +45,7 @@ resource "aws_lambda_function" "demo_lambda" {
 
   source_code_hash = data.archive_file.lambda.output_base64sha256
 
-  runtime = "Python 3.12"
+  runtime = "python3.12"
 
   environment {
     variables = {
