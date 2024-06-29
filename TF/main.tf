@@ -18,7 +18,7 @@ data "aws_iam_policy_document" "assume_role" {
 module "comcast_iam_role" {
   source    = "./IAM_Role"
   name               = "Comcast-Demo-lambda-policy"
-#   assume_role_policy = data.aws_iam_policy_document.assume_role.json
+  assume_role_policy = data.aws_iam_policy_document.assume_role.json
 }
 
 #### LAMBDA CODE ###
@@ -35,10 +35,10 @@ module "comcast_lambda_function" {
   source        = "./Lambda"
   filename      = "lambda_function_payload.zip"
   function_name = "Comcast-Demo-lambda-function"
-#   role          = aws_iam_role.demo_lambda.arn
+  role          = aws_iam_role.demo_lambda.arn
   handler       = "index.test"
 
-#   source_code_hash = data.archive_file.lambda.output_base64sha256
+  source_code_hash = data.archive_file.lambda.output_base64sha256
 
   runtime = "python3.12"
 

@@ -4,10 +4,10 @@ resource "aws_lambda_function" "demo_lambda" {
   # path.module in the filename.
   filename      = var.filename
   function_name = var.function_name
-  role          = aws_iam_role.demo_lambda.arn
+  role          = var.role
   handler       = var.handler
 
-  source_code_hash = data.archive_file.lambda.output_base64sha256
+  source_code_hash = var.source_code_hash
 
   runtime = var.runtime
 
