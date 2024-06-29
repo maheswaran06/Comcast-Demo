@@ -1,13 +1,5 @@
-resource "aws_s3_bucket" "oidctest" {
-  bucket = "test-bucket-comcast-demo-purpose"
+#### IAM POLICY ####
 
-  tags = {
-    Name        = "test-bucket-comcast-demo-purpose"
-    Environment = "Dev"
-  }
-}
-
-########## IAM POLICY ############
 data "aws_iam_policy_document" "assume_role" {
   statement {
     effect = "Allow"
@@ -21,11 +13,15 @@ data "aws_iam_policy_document" "assume_role" {
   }
 }
 
-######### IAM ROLE ##############
-resource "aws_iam_role" "demo_lambda" {
+#### IAM ROLE ###
+
+module "comcast_iam_role" {
+  source    = "./Resources"
   name               = "Comcast-Demo-lambda-policy"
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
 }
+
+#### LAMBDA CODE ###
 
 data "archive_file" "lambda" {
   type        = "zip"
@@ -33,11 +29,10 @@ data "archive_file" "lambda" {
   output_path = "lambda_function_payload.zip"
 }
 
+### LAMBDA FUNCTION ###
 
-########## LAMBDA FUNCTION CODE #################
-resource "aws_lambda_function" "demo_lambda" {
-  # If the file is not in the current working directory you will need to include a
-  # path.module in the filename.
+module "comcast_lambda_function" {
+  source        = "./Resources"
   filename      = "lambda_function_payload.zip"
   function_name = "Comcast-Demo-lambda-function"
   role          = aws_iam_role.demo_lambda.arn
