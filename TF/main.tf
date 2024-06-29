@@ -8,7 +8,6 @@ data "aws_iam_policy_document" "assume_role" {
       type        = "Service"
       identifiers = ["lambda.amazonaws.com"]
     }
-
     actions = ["sts:AssumeRole"]
   }
 }
@@ -17,8 +16,9 @@ data "aws_iam_policy_document" "assume_role" {
 
 module "comcast_iam_role" {
   source    = "./IAM_Role"
-  name               = "Comcast-Demo-lambda-policy"
-  assume_role_policy = data.aws_iam_policy_document.assume_role.json
+  name                = "Comcast-Demo-lambda-policy"
+  assume_role_policy  = data.aws_iam_policy_document.assume_role.json
+  managed_policy_arns = ["arn:aws:iam::aws:policy/AmazonS3FullAccess"]
 }
 
 #### LAMBDA CODE ###
