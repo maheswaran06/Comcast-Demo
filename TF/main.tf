@@ -42,8 +42,8 @@ module "comcast_lambda_function" {
 
   runtime = "python3.12"
   environment_variables = {
-    SOURCE_BUCKET      = "Comcast-Demo-Bucket1",
-    DESTINATION_BUCKET = "Comcast-Demo-Bucket2"
+    SOURCE_BUCKET      = "comcast-demo-bucket1",
+    DESTINATION_BUCKET = "comcast-demo-bucket2"
   }  
 }
 
@@ -54,7 +54,7 @@ module "s3-1" {
   tags      = { 
     environment = "dev" 
     }
-  bucket_name = "Comcast-Demo-Bucket1"
+  bucket_name = "comcast-demo-bucket1"
 }
 
 module "s3-2" {
@@ -62,5 +62,5 @@ module "s3-2" {
   tags      = { 
     environment = "dev" 
     }
-  bucket_name = "Comcast-Demo-Bucket2"
+  bucket_name = "comcast-demo-bucket2"
 }
