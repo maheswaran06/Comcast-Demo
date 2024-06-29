@@ -42,8 +42,8 @@ module "comcast_lambda_function" {
 
   runtime = "python3.12"
   environment_variables = {
-    SOURCE_BUCKET      = "comcast-demo-bucket1",
-    DESTINATION_BUCKET = "comcast-demo-bucket2"
+    SOURCE_BUCKET       = "comcast-demo-bucket1",
+    DESTINATION_BUCKET  = "comcast-demo-bucket2"
   }  
 }
 
@@ -73,7 +73,7 @@ resource "aws_lambda_permission" "allow_bucket" {
   action        = "lambda:InvokeFunction"
   function_name = module.comcast_lambda_function.function_name
   principal     = "s3.amazonaws.com"
-  source_arn    = "arn:aws:s3:::comcast-demo-bucket1"
+  source_arn    = module.s3-1.bucket_arn
 }
 
 resource "aws_s3_bucket_notification" "bucket_notification" {
