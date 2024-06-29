@@ -42,6 +42,25 @@ module "comcast_lambda_function" {
 
   runtime = "python3.12"
   environment_variables = {
-    Env = "Dev" 
+    SOURCE_BUCKET      = "Comcast-Demo-Bucket1",
+    DESTINATION_BUCKET = "Comcast-Demo-Bucket2"
   }  
+}
+
+### S3 DEPLOYMENT ###
+
+module "s3-1" {
+  source    = "./S3"
+  tags      = { 
+    environment = "dev" 
+    }
+  bucket_name = "Comcast-Demo-Bucket1"
+}
+
+module "s3-2" {
+  source    = "./S3"
+  tags      = { 
+    environment = "dev" 
+    }
+  bucket_name = "Comcast-Demo-Bucket2"
 }
