@@ -35,7 +35,7 @@ module "comcast_lambda_function" {
   source        = "./Lambda"
   filename      = "lambda_function_payload.zip"
   function_name = "Comcast-Demo-lambda-function"
-  role          = aws_iam_role.demo_lambda.arn
+  role          = module.comcast_iam_role.arn
   handler       = "index.test"
 
   source_code_hash = data.archive_file.lambda.output_base64sha256
