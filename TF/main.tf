@@ -64,3 +64,15 @@ module "s3-2" {
     }
   bucket_name = "comcast-demo-bucket2"
 }
+
+
+### BUCKET NOTIFICATION FOR S3-1 ###
+
+resource "aws_s3_bucket_notification" "bucket_notification" {
+  bucket = module.s3-1.bucket_id
+
+  lambda_function {
+    lambda_function_arn = module.comcast_lambda_function.function_arn
+    events              = ["s3:ObjectCreated:*"]
+  }
+}
