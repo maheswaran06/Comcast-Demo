@@ -68,6 +68,14 @@ module "s3-2" {
 
 ### BUCKET NOTIFICATION FOR S3-1 ###
 
+resource "aws_lambda_permission" "allow_bucket" {
+  statement_id  = "AllowExecutionFromS3Bucket"
+  action        = "lambda:InvokeFunction"
+  function_name = module.comcast_lambda_function.function_name
+  principal     = "s3.amazonaws.com"
+  source_arn    = "arn:aws:s3:::comcast-demo-bucket1"
+}
+
 resource "aws_s3_bucket_notification" "bucket_notification" {
   bucket = module.s3-1.bucket_id
 
@@ -75,4 +83,5 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
     lambda_function_arn = module.comcast_lambda_function.function_arn
     events              = ["s3:ObjectCreated:*"]
   }
+  depends_on = [aws_lambda_permission.allow_bucket]
 }
