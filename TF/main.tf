@@ -71,7 +71,7 @@ module "s3-2" {
 resource "aws_lambda_permission" "allow_bucket" {
   statement_id  = "AllowExecutionFromS3Bucket"
   action        = "lambda:InvokeFunction"
-  function_name = "Comcast-Demo-lambda-function"
+  function_name = module.comcast_lambda_function.function_name
   principal     = "s3.amazonaws.com"
   source_arn    = "arn:aws:s3:::comcast-demo-bucket1"
 }
