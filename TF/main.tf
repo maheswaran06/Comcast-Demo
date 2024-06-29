@@ -29,7 +29,7 @@ resource "aws_iam_role" "demo_lambda" {
 
 data "archive_file" "lambda" {
   type        = "zip"
-  source_file = "./Lambda/lambda.py"
+  source_file = "../Lambda"
   output_path = "lambda_function_payload.zip"
 }
 
