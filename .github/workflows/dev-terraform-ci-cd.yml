@@ -2,7 +2,7 @@ name: 'Terraform AWS CI/CD Pipeline'
 
 on:
   push:
-    branches: [ "dev" ]
+    branches: [ "main" ]
   pull_request:
 permissions:
       id-token: write

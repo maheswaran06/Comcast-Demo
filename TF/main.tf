@@ -52,7 +52,7 @@ module "comcast_lambda_function" {
 module "s3-1" {
   source    = "./S3"
   tags      = { 
-    environment = "dev" 
+    environment = "Prod" 
     }
   bucket_name = "comcast-demo-bucket1"
 }
@@ -60,7 +60,7 @@ module "s3-1" {
 module "s3-2" {
   source    = "./S3"
   tags      = { 
-    environment = "dev" 
+    environment = "Prod" 
     }
   bucket_name = "comcast-demo-bucket2"
 }
