@@ -1,10 +1,3 @@
-### IAM ROLE VARIABLES ###
-
-variable "rolename"{
-    type = string
-    description = "The filename of the Lambda function"
-}
-
 ### LAMBDA VARIABLES ###
 
 variable "filename"{

@@ -1,11 +1,3 @@
-
-######### IAM ROLE ##############
-resource "aws_iam_role" "demo_role" {
-  name               = var.rolename
-  assume_role_policy = data.aws_iam_policy_document.assume_role.json
-}
-
-
 ########## LAMBDA FUNCTION CODE #################
 resource "aws_lambda_function" "demo_lambda" {
   # If the file is not in the current working directory you will need to include a
