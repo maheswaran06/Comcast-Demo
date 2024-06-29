@@ -16,7 +16,7 @@ data "aws_iam_policy_document" "assume_role" {
 #### IAM ROLE ###
 
 module "comcast_iam_role" {
-  source    = "../Resources/"
+  source    = "./Resources/"
   name               = "Comcast-Demo-lambda-policy"
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
 }
@@ -32,7 +32,7 @@ data "archive_file" "lambda" {
 ### LAMBDA FUNCTION ###
 
 module "comcast_lambda_function" {
-  source        = "../Resources/"
+  source        = "./Resources/"
   filename      = "lambda_function_payload.zip"
   function_name = "Comcast-Demo-lambda-function"
   role          = aws_iam_role.demo_lambda.arn
