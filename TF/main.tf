@@ -47,32 +47,32 @@ module "comcast_lambda_function" {
   }  
 }
 
-### S3 DEPLOYMENT ###
+# ### S3 DEPLOYMENT ###
 
-module "s3-1" {
-  source    = "./S3"
-  tags      = { 
-    environment = "dev" 
-    }
-  bucket_name = "comcast-demo-bucket1"
-}
+# module "s3-1" {
+#   source    = "./S3"
+#   tags      = { 
+#     environment = "dev" 
+#     }
+#   bucket_name = "comcast-demo-bucket1"
+# }
 
-module "s3-2" {
-  source    = "./S3"
-  tags      = { 
-    environment = "dev" 
-    }
-  bucket_name = "comcast-demo-bucket2"
-}
+# module "s3-2" {
+#   source    = "./S3"
+#   tags      = { 
+#     environment = "dev" 
+#     }
+#   bucket_name = "comcast-demo-bucket2"
+# }
 
 
-### BUCKET NOTIFICATION FOR S3-1 ###
+# ### BUCKET NOTIFICATION FOR S3-1 ###
 
-resource "aws_s3_bucket_notification" "bucket_notification" {
-  bucket = module.s3-1.bucket_id
+# resource "aws_s3_bucket_notification" "bucket_notification" {
+#   bucket = module.s3-1.bucket_id
 
-  lambda_function {
-    lambda_function_arn = module.comcast_lambda_function.function_arn
-    events              = ["s3:ObjectCreated:*"]
-  }
-}
+#   lambda_function {
+#     lambda_function_arn = module.comcast_lambda_function.function_arn
+#     events              = ["s3:ObjectCreated:*"]
+#   }
+# }
