@@ -85,3 +85,16 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
   }
   depends_on = [aws_lambda_permission.allow_bucket]
 }
+
+
+### SNS TOPIC ###
+
+resource "aws_sns_topic" "topic" {
+  name = "comcast-demo-sns"
+}
+
+resource "aws_sns_topic_subscription" "email-target" {
+  topic_arn = aws_sns_topic.topic.arn
+  protocol  = "email"
+  endpoint  = "gmaheswaran06@gmail.com"
+}
