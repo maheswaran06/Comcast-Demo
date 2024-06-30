@@ -18,7 +18,7 @@ module "comcast_iam_role" {
   source    = "./IAM_Role"
   name                = "Comcast-Demo-lambda-policy"
   assume_role_policy  = data.aws_iam_policy_document.assume_role.json
-  managed_policy_arns = ["arn:aws:iam::aws:policy/AmazonS3FullAccess", "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"]
+  managed_policy_arns = ["arn:aws:iam::aws:policy/AmazonS3FullAccess", "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole", "arn:aws:iam::aws:policy/AmazonSNSFullAccess"]
 }
 
 #### LAMBDA CODE ###
@@ -43,7 +43,9 @@ module "comcast_lambda_function" {
   runtime = "python3.12"
   environment_variables = {
     SOURCE_BUCKET       = "comcast-demo-bucket1",
-    DESTINATION_BUCKET  = "comcast-demo-bucket2"
+    DESTINATION_BUCKET  = "comcast-demo-bucket2",
+    SNS_TOPIC_ARN       = "arn:aws:sns:us-east-1:992382808270:comcast-demo-sns"
+
   }  
 }
 
