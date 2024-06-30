@@ -3,11 +3,11 @@ name: 'Terraform AWS CI/CD Pipeline'
 on:
   push:
     branches: [ "main" ]
-  pull_request:
+
 permissions:
-      id-token: write
-      contents: write
-      pull-requests: write
+    id-token: write
+    contents: write
+    pull-requests: write
 
 env:
   TF_LOG: INFO
@@ -15,9 +15,8 @@ env:
 
 jobs:
   deploy:
-    name: 'Terraform CI/CD'
+    name: 'Terraform CI/CD Deployment'
     runs-on: ubuntu-latest
-    # environment: production
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
@@ -52,15 +51,11 @@ jobs:
         AWS_BUCKET_KEY_NAME: ${{ SECRETS.AWS_BUCKET_KEY_NAME }} 
       run: terraform init -backend-config="bucket=${AWS_BUCKET_NAME}" -backend-config="key=${AWS_BUCKET_KEY_NAME}"
 
-    # # Checks that all Terraform configuration files adhere to a canonical format
-    # - name: Terraform Format
-    #   run: terraform fmt -check
-
     # Generates an execution plan for Terraform
     - name: Terraform Plan
       run: terraform plan -input=false
 
     # Applies the Plan generated in above step
     - name: Terraform Apply
-      # if: github.ref == 'refs/heads/"dev"' #&& github.event_name == 'push'
+      if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
       run: terraform apply -auto-approve -input=false
