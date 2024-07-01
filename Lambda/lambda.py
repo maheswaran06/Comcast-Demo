@@ -41,7 +41,7 @@ def lambda_handler(event, context):
             logger.info(success_message)
             sns.publish(
                 TopicArn=SNS_TOPIC_ARN,
-                Subject='S3 File Transfer Success',
+                Subject='Comcast Demo S3 File Transfer Success',
                 Message=success_message
             )
 
@@ -55,7 +55,7 @@ def lambda_handler(event, context):
         logger.error(error_message)
         sns.publish(
             TopicArn=SNS_TOPIC_ARN,
-            Subject='S3 File Transfer Error',
+            Subject='Comcast Demo S3 File Transfer Error',
             Message=error_message
         )
         return {
