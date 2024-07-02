@@ -55,7 +55,7 @@ module "s3-1" {
   source    = "./S3"
   tags      = { 
     environment = "Prod"
-    name        = "source bucket"
+    
     }
   bucket_name = "comcast-demo-bucket1"
 }
@@ -64,7 +64,6 @@ module "s3-2" {
   source    = "./S3"
   tags      = { 
     environment = "Prod"
-    name        = "destination bucket"
 
     }
   bucket_name = "comcast-demo-bucket2"
