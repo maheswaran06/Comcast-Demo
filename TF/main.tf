@@ -71,6 +71,16 @@ module "s3-2" {
   bucket_name = "comcast-demo-bucket2"
 }
 
+module "s3-3" {
+  source    = "./S3"
+  tags      = { 
+    environment = "Prod"
+    Name        = "Testing bucket"
+
+    }
+  bucket_name = "comcast-demo-bucket34"
+}
+
 
 ### BUCKET NOTIFICATION FOR S3-1 ###
 
