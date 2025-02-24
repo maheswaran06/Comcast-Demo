@@ -76,6 +76,7 @@ module "s3-3" {
   tags      = { 
     environment = "Prod"
     Name        = "Testing bucket"
+    Name2       = "Hari"    
 
     }
   bucket_name = "comcast-demo-bucket34"
