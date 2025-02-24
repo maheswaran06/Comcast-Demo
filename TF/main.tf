@@ -114,3 +114,15 @@ resource "aws_sns_topic_subscription" "email-target" {
   protocol  = "email"
   endpoint  = "gmaheswaran06@gmail.com"
 }
+
+### S3 DEMO #####
+
+resource "aws_s3_bucket" "bucketdemo" {
+  bucket = "hari-demo"
+
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+    Cost_Centre = "2637"
+  }
+}
