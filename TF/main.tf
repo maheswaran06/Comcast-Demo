@@ -125,5 +125,6 @@ resource "aws_s3_bucket" "bucketdemo" {
     Name        = "My bucket"
     Environment = "Dev"
     Cost_Centre = "2637"
+    Test1       = "Sample"
   }
 }
